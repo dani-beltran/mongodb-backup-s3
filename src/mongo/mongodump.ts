@@ -1,7 +1,7 @@
 import { spawn } from "child_process";
 import path from "path";
 import fs from "fs";
-import type { Config } from "./config";
+import type { Config } from "../config";
 
 export interface DumpResult {
   outputPath: string;

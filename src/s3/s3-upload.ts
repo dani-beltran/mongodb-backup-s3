@@ -2,8 +2,8 @@ import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 import fs from "fs";
 import path from "path";
 import { createReadStream } from "fs";
-import type { Config } from "./config";
-import type { DumpResult } from "./mongodump";
+import type { Config } from "../config";
+import type { DumpResult } from "../mongo/mongodump";
 
 export interface UploadResult {
   bucket: string;

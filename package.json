@@ -8,7 +8,9 @@
   },
   "scripts": {
     "build": "tsc",
-    "dump": "tsc && node dist/index.js",
+    "dump": "tsc && node dist/index.js dump",
+    "restore": "tsc && node dist/index.js restore",
+    "list": "tsc && node dist/index.js list",
     "dev": "ts-node src/index.ts"
   },
   "keywords": [
