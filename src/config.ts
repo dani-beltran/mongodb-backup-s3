@@ -31,7 +31,7 @@ function getEnvOrThrow(key: string): string {
 export function loadConfig(): Config {
   return {
     mongodb: {
-      uri: process.env.MONGODB_URI || "mongodb://localhost:27017",
+      uri: `mongodb://${process.env.MONGO_INITDB_ROOT_USERNAME}:${process.env.MONGO_INITDB_ROOT_PASSWORD}@${process.env.MONGODB_HOST || "localhost:27017"}`,
       database: getEnvOrThrow("MONGODB_DATABASE"),
     },
     aws: {
