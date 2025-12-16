@@ -98,6 +98,27 @@ s3://your-bucket/
                 └── collection2.metadata.json.gz
 ```
 
+## Docker
+
+### Build the image
+
+```bash
+npm run build
+docker build -t mongodb-backup-s3 .
+```
+
+### Run MongoDB with Docker Compose
+
+```bash
+docker compose up -d mongodb
+```
+
+### Run a backup with Docker Compose
+
+```bash
+docker compose --profile backup run --rm backup
+```
+
 ## Restoring from Backup
 
 Download the backup from S3 and use `mongorestore`:
