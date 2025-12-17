@@ -2,14 +2,14 @@ import { loadConfig } from "../config";
 import { cleanupLocalBackup, createMongoDump } from "../mongo/mongodump";
 import { uploadToS3 } from "../s3/s3-upload";
 
-export async function runDump(options: { keepLocal: boolean; bucket?: string }): Promise<void> {
+export async function runDump(options: { keepLocal: boolean; bucket?: string; prefix?: string }): Promise<void> {
   const startTime = Date.now();
 
   console.log("🚀 MongoDB Backup to S3 - Starting...\n");
 
   try {
     // Load configuration
-    const config = loadConfig({ bucket: options.bucket });
+    const config = loadConfig({ bucket: options.bucket, prefix: options.prefix });
     console.log(`📋 Configuration loaded`);
     console.log(`   Database: ${config.mongodb.database}`);
     console.log(`   S3 Bucket: ${config.s3.bucket}`);

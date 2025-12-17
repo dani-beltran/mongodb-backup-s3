@@ -30,6 +30,7 @@ function getEnvOrThrow(key: string): string {
 
 export interface ConfigOptions {
   bucket?: string;
+  prefix?: string;
 }
 
 export function loadConfig(options?: ConfigOptions): Config {
@@ -46,7 +47,7 @@ export function loadConfig(options?: ConfigOptions): Config {
     },
     s3: {
       bucket: options?.bucket || getEnvOrThrow("S3_BUCKET"),
-      prefix: process.env.S3_PREFIX || "backups/mongodb",
+      prefix: options?.prefix || process.env.S3_PREFIX || "backups/mongodb",
     },
     mongodumpPath: process.env.MONGODUMP_PATH || "mongodump",
   };
