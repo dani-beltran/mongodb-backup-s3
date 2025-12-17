@@ -31,13 +31,14 @@ function getEnvOrThrow(key: string): string {
 export interface ConfigOptions {
   bucket?: string;
   prefix?: string;
+  database?: string;
 }
 
 export function loadConfig(options?: ConfigOptions): Config {
   return {
     mongodb: {
       uri: getEnvOrThrow("MONGODB_URI"),
-      database: getEnvOrThrow("MONGODB_DATABASE"),
+      database: options?.database || getEnvOrThrow("MONGODB_DATABASE"),
     },
     aws: {
       accessKeyId: getEnvOrThrow("AWS_ACCESS_KEY_ID"),

@@ -18,6 +18,7 @@ program
   .option("-k, --keep-local", "Keep local backup files after upload", false)
   .option("-B, --bucket <name>", "S3 bucket name (overrides S3_BUCKET env var)")
   .option("-P, --prefix <path>", "S3 prefix path (overrides S3_PREFIX env var)")
+  .option("-D, --database <name>", "MongoDB database name (overrides MONGODB_DATABASE env var)")
   .action(runDump);
 
 program
@@ -28,6 +29,7 @@ program
   .option("-k, --keep-local", "Keep downloaded backup files after restore", false)
   .option("-B, --bucket <name>", "S3 bucket name (overrides S3_BUCKET env var)")
   .option("-P, --prefix <path>", "S3 prefix path (overrides S3_PREFIX env var)")
+  .option("-D, --database <name>", "MongoDB database name (overrides MONGODB_DATABASE env var)")
   .action(runRestore);
 
 program
