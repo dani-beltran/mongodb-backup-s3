@@ -96,9 +96,22 @@ npx mbs3 dump
 
 **Options:**
 - `-k, --keep-local` - Keep local backup files after upload
+- `-B, --bucket <name>` - S3 bucket name (overrides S3_BUCKET env var)
+- `-P, --prefix <path>` - S3 prefix path (overrides S3_PREFIX env var)
+- `-D, --database <name>` - MongoDB database name (overrides MONGODB_DATABASE env var)
 
 ```bash
+# Basic dump
+npx mbs3 dump
+
+# Keep local backup files
 npx mbs3 dump --keep-local
+
+# Dump to a specific bucket and prefix
+npx mbs3 dump --bucket my-backup-bucket --prefix backups/production
+
+# Dump a specific database
+npx mbs3 dump --database my-other-database
 ```
 
 ### Restore
@@ -113,6 +126,9 @@ npx mbs3 restore
 - `-b, --backup <name>` - Specific backup folder name to restore (defaults to most recent)
 - `-d, --drop` - Drop existing collections before restore
 - `-k, --keep-local` - Keep downloaded backup files after restore
+- `-B, --bucket <name>` - S3 bucket name (overrides S3_BUCKET env var)
+- `-P, --prefix <path>` - S3 prefix path (overrides S3_PREFIX env var)
+- `-D, --database <name>` - MongoDB database name (overrides MONGODB_DATABASE env var)
 
 ```bash
 # Restore most recent backup
@@ -126,6 +142,12 @@ npx mbs3 restore --drop
 
 # Keep downloaded files after restore
 npx mbs3 restore --keep-local
+
+# Restore from a specific bucket and prefix
+npx mbs3 restore --bucket my-backup-bucket --prefix backups/production
+
+# Restore to a specific database
+npx mbs3 restore --database my-other-database --drop
 ```
 
 ### List Backups
@@ -134,6 +156,18 @@ List all available backups in S3:
 
 ```bash
 npx mbs3 list
+```
+
+**Options:**
+- `-B, --bucket <name>` - S3 bucket name (overrides S3_BUCKET env var)
+- `-P, --prefix <path>` - S3 prefix path (overrides S3_PREFIX env var)
+
+```bash
+# List backups from a specific bucket
+npx mbs3 list --bucket my-backup-bucket
+
+# List backups from a specific prefix
+npx mbs3 list --prefix backups/production
 ```
 
 ### Version
