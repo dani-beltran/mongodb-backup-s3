@@ -1,4 +1,4 @@
-# MongoDB Backup to S3
+# mbs3 - MongoDB Backup to S3 storage
 
 A CLI tool to backup and restore MongoDB databases using `mongodump`/`mongorestore` and Amazon S3.
 
@@ -32,14 +32,6 @@ The mongodump tool is included in the official MongoDB images.
 You can run commands directly without installing:
 
 ```bash
-npx mongodb-backup-s3 dump
-npx mongodb-backup-s3 restore
-npx mongodb-backup-s3 list
-```
-
-Or use the shorter alias:
-
-```bash
 npx mbs3 dump
 npx mbs3 restore
 npx mbs3 list
@@ -50,17 +42,12 @@ npx mbs3 list
 Install globally to use anywhere:
 
 ```bash
-npm install -g mongodb-backup-s3
+npm install -g mbs3
 ```
 
 Then use directly:
 
 ```bash
-mongodb-backup-s3 dump
-mongodb-backup-s3 restore
-mongodb-backup-s3 list
-
-# Or with the short alias
 mbs3 dump
 mbs3 restore
 mbs3 list
@@ -69,7 +56,7 @@ mbs3 list
 ### Local Installation
 
 ```bash
-npm install mongodb-backup-s3
+npm install mbs3
 ```
 
 ## Configuration
@@ -194,7 +181,7 @@ s3://your-bucket/
 
 ```bash
 npm run build
-docker build -t mongodb-backup-s3 .
+docker build -t mbs3 .
 ```
 
 ### Run MongoDB with Docker Compose

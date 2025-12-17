@@ -1,11 +1,10 @@
 {
-  "name": "mongodb-backup-s3",
+  "name": "mbs3",
   "version": "0.1.1",
   "description": "CLI tool to backup MongoDB database and upload to S3",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
-    "mongodb-backup-s3": "dist/index.js",
     "mbs3": "dist/index.js"
   },
   "files": [
