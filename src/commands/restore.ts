@@ -4,13 +4,13 @@ import { loadConfig } from "../config";
 import { runMongoRestore } from "../mongo/mongorestore";
 import { downloadFromS3, listBackups } from "../s3/s3-download";
 
-export async function runRestore(options: { backup?: string; drop: boolean; keepLocal: boolean }): Promise<void> {
+export async function runRestore(options: { backup?: string; drop: boolean; keepLocal: boolean; bucket?: string }): Promise<void> {
   const startTime = Date.now();
 
   console.log("🔄 MongoDB Restore from S3 - Starting...\n");
 
   try {
-    const config = loadConfig();
+    const config = loadConfig({ bucket: options.bucket });
     console.log(`📋 Configuration loaded`);
     console.log(`   Database: ${config.mongodb.database}`);
     console.log(`   S3 Bucket: ${config.s3.bucket}`);

@@ -1,11 +1,11 @@
 import { loadConfig } from "../config";
 import { listBackups } from "../s3/s3-download";
 
-export async function runListBackups(): Promise<void> {
+export async function runListBackups(options: { bucket?: string }): Promise<void> {
   console.log("📋 MongoDB Backups - Listing...\n");
 
   try {
-    const config = loadConfig();
+    const config = loadConfig({ bucket: options.bucket });
     const backups = await listBackups(config);
 
     if (backups.length === 0) {

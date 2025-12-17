@@ -28,7 +28,11 @@ function getEnvOrThrow(key: string): string {
   return value;
 }
 
-export function loadConfig(): Config {
+export interface ConfigOptions {
+  bucket?: string;
+}
+
+export function loadConfig(options?: ConfigOptions): Config {
   return {
     mongodb: {
       uri: getEnvOrThrow("MONGODB_URI"),
@@ -41,7 +45,7 @@ export function loadConfig(): Config {
       endpoint: process.env.AWS_ENDPOINT || undefined,
     },
     s3: {
-      bucket: getEnvOrThrow("S3_BUCKET"),
+      bucket: options?.bucket || getEnvOrThrow("S3_BUCKET"),
       prefix: process.env.S3_PREFIX || "backups/mongodb",
     },
     mongodumpPath: process.env.MONGODUMP_PATH || "mongodump",
